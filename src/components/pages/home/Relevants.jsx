@@ -39,8 +39,7 @@ const defaultCompassionImages = [
     },
 ]
 
-const defaultCompassionDescription =
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
+const defaultCompassionDescription ='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
 
 function FeatureIcon({ name }) {
     if (name === 'involved') {
@@ -95,8 +94,7 @@ function CompassionPhoto({ photo }) {
     }
 
     if (photo.position === 'last') {
-        positionClasses =
-            'sm:col-span-2 sm:mx-auto sm:w-1/2 lg:col-span-1 lg:mx-0 lg:mt-0 lg:w-full'
+        positionClasses ='sm:col-span-2 sm:mx-auto sm:w-1/2 lg:col-span-1 lg:mx-0 lg:mt-0 lg:w-full'
     }
 
     return (
@@ -116,14 +114,12 @@ function Relevants({
 }) {
     return (
         <>
-            {/* The three cards from the "A Church That's Relevant" part of Figma. */}
             <section className="bg-white px-6 py-20 sm:px-10 lg:py-28">
                 <div className="mx-auto max-w-6xl">
                     <SectionHeading
                         title="A Church That's Relevant"
                         className="mb-12 md:mb-16"
                     />
-
                     <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
                         {features.map((feature) => (
                             <FeatureCard key={feature.title} {...feature} />
@@ -131,7 +127,7 @@ function Relevants({
                     </div>
                 </div>
             </section>
-
+            
             <section className="bg-white px-6 pb-20 pt-8 sm:px-10 lg:pb-28">
                 <div className="mx-auto max-w-5xl text-center">
                     <SectionHeading

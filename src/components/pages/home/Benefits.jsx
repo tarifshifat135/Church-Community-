@@ -35,17 +35,10 @@ const defaultBenefits = [
 function BenefitCard({ benefit }) {
     return (
         <article className="relative aspect-[4/5] overflow-hidden bg-brand-dark text-white">
-            <img
-                src={benefit.image}
-                alt={benefit.imageAlt}
-                className="absolute inset-0 h-full w-full object-cover"
-            />
+            <img  src={benefit.image}  alt={benefit.imageAlt}  className="absolute inset-0 h-full w-full object-cover"/>
 
             {benefit.needsGradient && (
-                <div
-                    aria-hidden="true"
-                    className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent"
-                />
+                <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent" />
             )}
 
             {!benefit.titleInImage && (
@@ -59,20 +52,11 @@ function BenefitCard({ benefit }) {
     )
 }
 
-function Benefits({
-    eyebrow = 'Watch and Listen',
-    title = 'The Benefits of Joining Our Church',
-    cards = defaultBenefits,
-}) {
+function Benefits({ eyebrow = 'Watch and Listen', title = 'The Benefits of Joining Our Church', cards = defaultBenefits, }) {
     return (
         <section className="bg-[#F5F2F0] px-6 py-20 sm:px-10 lg:py-28">
             <div className="mx-auto max-w-6xl">
-                <SectionHeading
-                    eyebrow={eyebrow}
-                    title={title}
-                    className="mx-auto mb-12 max-w-2xl md:mb-16"
-                />
-
+                <SectionHeading eyebrow={eyebrow} title={title} className="mx-auto mb-12 max-w-2xl md:mb-16"/>
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
                     {cards.map((benefit, index) => (
                         <BenefitCard
