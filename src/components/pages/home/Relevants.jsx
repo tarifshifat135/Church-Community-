@@ -8,20 +8,17 @@ const defaultFeatures = [
     {
         icon: 'church',
         title: 'About our Church',
-        description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam erat.',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam erat.',
     },
     {
         icon: 'involved',
         title: 'Get involved',
-        description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam erat.',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam erat.',
     },
     {
         icon: 'giving',
         title: 'Giving back',
-        description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam erat.',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam erat.',
     },
 ]
 
@@ -30,16 +27,16 @@ const defaultCompassionImages = [
     {
         src: relMiddleImage,
         alt: 'Two people reading together in church',
-        position: 'middle',
+        className: 'lg:mt-16',
     },
     {
         src: relRightImage,
         alt: 'A woman offering support to people in the congregation',
-        position: 'last',
+        className: 'sm:col-span-2 sm:mx-auto sm:w-1/2 lg:col-span-1 lg:mx-0 lg:mt-0 lg:w-full',
     },
 ]
 
-const defaultCompassionDescription ='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
+const defaultCompassionDescription = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
 
 function FeatureIcon({ name }) {
     if (name === 'involved') {
@@ -72,7 +69,7 @@ function FeatureIcon({ name }) {
 
 function FeatureCard({ icon, title, description }) {
     return (
-        <article className="border-b-8 border-brand-peach bg-[#FFF5EB] px-8 py-10 sm:px-10">
+        <article className="border-b-8 border-transparent bg-[#FFF5EB] px-8 py-10 transition-all duration-300 hover:-translate-y-2 hover:border-brand-peach hover:shadow-xl focus-within:-translate-y-1 sm:px-10">
             <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-full bg-brand-peach/60 text-brand-ink">
                 <FeatureIcon name={icon} />
             </div>
@@ -86,40 +83,19 @@ function FeatureCard({ icon, title, description }) {
     )
 }
 
-function CompassionPhoto({ photo }) {
-    let positionClasses = ''
-
-    if (photo.position === 'middle') {
-        positionClasses = 'lg:mt-16'
-    }
-
-    if (photo.position === 'last') {
-        positionClasses ='sm:col-span-2 sm:mx-auto sm:w-1/2 lg:col-span-1 lg:mx-0 lg:mt-0 lg:w-full'
-    }
-
+function CompassionPhoto({ src, alt, className = '' }) {
     return (
-        <img
-            src={photo.src}
-            alt={photo.alt}
-            className={`aspect-[4/5] w-full rounded-2xl object-cover ${positionClasses}`}
-        />
+        <img src={src} alt={alt} className={`aspect-[4/5] w-full rounded-2xl object-cover ${className}`} />
     )
 }
 
-function Relevants({
-    features = defaultFeatures,
-    compassionImages = defaultCompassionImages,
-    compassionDescription = defaultCompassionDescription,
-    readMoreHref = '#about',
+function Relevants({ features = defaultFeatures, compassionImages = defaultCompassionImages, compassionDescription = defaultCompassionDescription, readMoreHref = '#about',
 }) {
     return (
         <>
-            <section className="bg-white px-6 py-20 sm:px-10 lg:py-28">
+            <section id="about" className="bg-white px-6 py-20 sm:px-10 lg:py-28">
                 <div className="mx-auto max-w-6xl">
-                    <SectionHeading
-                        title="A Church That's Relevant"
-                        className="mb-12 md:mb-16"
-                    />
+                    <SectionHeading title="A Church That's Relevant" className="mb-12 md:mb-16" />
                     <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
                         {features.map((feature) => (
                             <FeatureCard key={feature.title} {...feature} />
@@ -127,21 +103,16 @@ function Relevants({
                     </div>
                 </div>
             </section>
-            
+
             <section className="bg-white px-6 pb-20 pt-8 sm:px-10 lg:pb-28">
                 <div className="mx-auto max-w-5xl text-center">
-                    <SectionHeading
-                        title="Love and Compassion"
-                        description={compassionDescription}
-                    />
-                    <ButtonLink href={readMoreHref} className="mt-8">
-                        Read More
-                    </ButtonLink>
+                    <SectionHeading title="Love and Compassion" description={compassionDescription} />
+                    <ButtonLink href={readMoreHref} className="mt-8">Read More</ButtonLink>
                 </div>
 
                 <div className="mx-auto mt-14 grid max-w-5xl grid-cols-1 items-start gap-6 sm:grid-cols-2 lg:grid-cols-3">
                     {compassionImages.map((photo) => (
-                        <CompassionPhoto key={photo.src} photo={photo} />
+                        <CompassionPhoto key={photo.src} {...photo} />
                     ))}
                 </div>
             </section>

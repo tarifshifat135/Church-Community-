@@ -1,9 +1,4 @@
 @import "tailwindcss";
 
-
-@theme{
-  --color-brand-dark: #0d0d0d;
-  --color-brand-peach: #ffd2a4;
-  --color-brand-peach-hover: #f5bd84;
-  --color-brand-ink: #1c1d28;
-}
+@theme { --font-sans: "Roboto Condensed", "Arial Narrow", ui-sans-serif, system-ui, sans-serif; --color-brand-dark: #0d0d0d; --color-brand-peach: #ffd2a4; --color-brand-peach-hover: #f5bd84; --color-brand-ink: #1c1d28; }
+body { font-family: var(--font-sans); }
